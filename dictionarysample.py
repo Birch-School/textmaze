@@ -21,7 +21,7 @@ drawer = {'tea spoons': 10, 'soup spoons': 12, 'forks': 8, 'knives': 7}
 # print everything as entered (items may be out of order!)
 print (drawer) 
 
-# 2 different ways to find out how many forks?
+# 2 different ways to find out how many forks.
 # The get method is probably more Python-y
 print (drawer['forks'])
 print (drawer.get('forks'))
@@ -36,5 +36,9 @@ print (drawer.values())
 mylist = list(drawer.values())
 print (mylist)
 
-
-
+'''
+**************************************************************************
+Homework!
+Use a for loop to get a total number of things in the drawer.
+It will be easier if you first convert the values to a list
+'''
