@@ -1,39 +1,64 @@
 ''' A simple start to a text maze game with a single path thru the maze
 Players have to choose the correct direction to get out of a room.
 
-This also is an introduction to making objects in Python.  The 2 classes
-construct the rooms and keep track of the player or make it easy to make
-the game multi player. 
+This also is an introduction to making objects in Python.
 '''
-
-class Room:
-    def __init__ (self, name, exit):
-        self.name = name
-        self.exit = exit
-
 class Player:
-    lives = 3  #initial number of lives
+     
     def __init__ (self, name, room):
+        self.lifes = 3
         self.name = name
         self.room = room
         
+    def info(self):
+        print ('Hi {}.  Your room {}. You have {} lifes left' \
+        .format(self.name, self.room, self.lifes))
+        print ('*'* 60)
+        
+    def change_room(self):
+        pass
+    
+    def win(self):
+        pass
 
-# Starting room and the way out
-start = Room('Entrance','l')
- 
-# Player object
-name = input ('What is your name ?')
-#put the player in the start room
-player = Player(name, start)
+    def lose(self):
+        self.lifes = self.lifes -1
 
+################### SETUP #####################
 
-wayout = input ("Which way out, r or l ?")
-if wayout != start.exit:
-    print (player.name + ' you can not go that way!')
-    player.lives = 2
-    print ('You have ' + str(player.lives) + ' lives left')
+print('Can you find your way thru the house?  l for left and r for right')
+        
+rooms = {1:['Entry','l',' You are standing in front of an abandoned house '\
+'There is a door on the left and right. It starts to rain.'],
+    2:['Hallway','r','You are in the Hallway.'],
+    3:['Living Room','r','You are in the living room.']
+    }       #add rooms by addding items to the dictionary
+
+room = 0                    #first room is counted from zero!
+# First Player object
+name = input ('What is your name ? ')
+# put the player in the start room
+player = Player(name, room)
+room_numbers = list (rooms.keys())      #list of room numbers
+room_info = list(rooms.values())           #list of room data
+
+################### GAME LOOP goes here###################
+#   Current room
+player.info()
+room_name = room_info[room][0]
+wayout = room_info[room][1]
+description = room_info [room][2]
+
+#check for wayout
+whichway = input (description + ' Choose the way ')
+if whichway == wayout:
+    room = room + 1     #go to next room
+    print ('You have chosen well ' + player.name)
 else:
-    print ('Good')
-    player.lives = 3
+    print ('Sorry bub')
+    player.lose()
+    player.info()
+
+    
     
     #add code here to move player to the next room and so on
