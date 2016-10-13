@@ -12,10 +12,11 @@ class Room:
         self.exit = exit
 
 class Player:
-    lives = 3  #initial number of lives
+     
     def __init__ (self, name, room):
         self.name = name
         self.room = room
+        self.lifes = 3
         
 
 # Starting room and the way out
@@ -30,10 +31,14 @@ player = Player(name, start)
 wayout = input ("Which way out, r or l ?")
 if wayout != start.exit:
     print (player.name + ' you can not go that way!')
-    player.lives = 2
-    print ('You have ' + str(player.lives) + ' lives left')
+    player.lifes = 2
+    print ('You have ' + str(player.lifes) + ' lifes left')
+    # same line as above, but using the print.format method
+    # It saves the call to str() is easier than stringing the
+    # text and variables together with + 
+    print('You have {} lifes left'.format(player.lifes))
 else:
     print ('Good')
-    player.lives = 3
+    player.lifes = 3
     
     #add code here to move player to the next room and so on
