@@ -3,7 +3,7 @@ Use a spreadsheet program to write the room, save as a csv file.
 csv is short for Comma Separated File.
 
 This is an example of what one looks like.
-Classroom,A well light room,chalk
+Classroom,A well lighted room,chalk
 Basement,Dark and musty ,brick
 Dungeon,Moans are heard,key
 
@@ -19,7 +19,7 @@ for line in open("rooms.csv"):
     room = line.split(",")          # single room
     roomslist.append(room)          # all the rooms
  
-###############  make into a dictionary ######################
+###############  make list into a dictionary ######################
 keys = []
 number_of_rooms = (len(roomslist))
 for i in range(number_of_rooms):
